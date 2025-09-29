@@ -1,0 +1,45 @@
+version: 1.2.4
+
+cache: true
+
+#fileStrategy: "s3"
+
+interface:
+  webSearch: false
+  runCode: false
+
+mcpServers:
+  fetch:
+    type: stdio
+    command: uvx
+    args:
+      - "mcp-server-fetch"
+    serverInstructions: "Retrieve and convert web content to markdown for analysis."
+    startup: true
+  calculator:
+    type: stdio
+    command: uvx
+    args:
+      - "mcp-server-calculator"
+    serverInstructions: "Provides a secure mathematical expression evaluation service using Python's AST module for basic operations without relying on eval(), enabling quick calculations within conversations."
+    startup: true
+  google-search:
+    type: stdio
+    command: npx
+    args:
+      - "-y"
+      - "@adenot/mcp-google-search"
+    serverInstructions: "Google search tools for finding up-to-date public information"
+    startup: true
+    env:
+      GOOGLE_API_KEY: "${GOOGLE_API_KEY}"
+      GOOGLE_SEARCH_ENGINE_ID: "${GOOGLE_SEARCH_ENGINE_ID}"
+
+endpoints:
+  all:
+    titleConvo: true
+    titleEndpoint: "openAI"
+    titleModel: "gpt-5-mini"
+  agents:
+    recursionLimit: 100
+    maxRecursionLimit: 200
