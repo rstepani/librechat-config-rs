@@ -9,6 +9,13 @@ interface:
   runCode: false
 
 mcpServers:
+  Investor-Agent:
+    type: stdio
+    command: uvx
+    args:
+      - "investor-agent"
+    serverInstructions: "Retrieve and manage financial data"
+    startup: true
   fetch:
     type: stdio
     command: uvx
