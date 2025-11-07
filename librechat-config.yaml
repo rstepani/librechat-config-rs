@@ -16,6 +16,13 @@ mcpServers:
       - "investor-agent"
     serverInstructions: "Retrieve and manage financial data"
     startup: true
+  Finance-Tool:
+    type: stdio
+    command: uvx
+    args:
+      - "mcp-server-finance"
+    serverInstructions: "Retrieve and manage financial data"
+    startup: true
   fetch:
     type: stdio
     command: uvx
